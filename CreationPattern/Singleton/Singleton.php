@@ -14,7 +14,7 @@ final class Singleton //禁止被继承
     public static function getInstance()
     {
         if(null === static::$instance){
-            return static::$instance = new static;
+            static::$instance = new static;
         }
         return static::$instance;
     }
