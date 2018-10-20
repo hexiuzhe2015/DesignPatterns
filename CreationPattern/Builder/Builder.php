@@ -19,10 +19,12 @@ interface Builder
 class Director
 {
     private $builder;
-    public function __construct(Builder $builder){
+    public function __construct(Builder $builder)
+    {
         $this->builder = $builder;
     }
-    public function construct(){
+    public function construct()
+    {
         $this->builder->buildPartA();
         $this->builder->buildPartB();
         $this->builder->buildPartC();
