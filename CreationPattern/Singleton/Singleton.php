@@ -11,7 +11,7 @@ final class Singleton //禁止被继承
 {
     private static $instance;
 
-    public static function getInstance()
+    public static function getInstance() //具有延迟初始化（Lazy initialization）特点
     {
         if(null === static::$instance){
             static::$instance = new static;
@@ -33,3 +33,4 @@ final class Singleton //禁止被继承
         // TODO: Implement __wakeup() method.
     } // 防止被反序列化
 }
+

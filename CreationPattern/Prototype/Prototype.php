@@ -14,6 +14,7 @@ abstract class Prototype
     public function __clone()
     {
         // TODO: Implement __clone() method.
+        // clone $this; // 当调用clone方法时会导致500错误，但其他页面均正常
     }
 }
 

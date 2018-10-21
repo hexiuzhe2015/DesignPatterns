@@ -19,7 +19,7 @@ interface Builder
 class Director
 {
     private $builder;
-    public function __construct(Builder $builder)
+    public function __construct(Builder $builder) // 依赖注入模式(Dependency Injection)的实现
     {
         $this->builder = $builder;
     }
