@@ -8,8 +8,6 @@
 
 namespace DesignPatterns\CreationalPattern\ObjectPool;
 
-
-
 interface KernelContract
 {
 
@@ -52,8 +50,6 @@ class Application extends Container
 
     public function bind($abstract, $concrete = null, $shared = false)
     {
-
-
         if (is_null($concrete)) {
             $concrete = $abstract;
         }
@@ -75,7 +71,6 @@ class Application extends Container
             return $container->make($concrete, $parameters);
         };
     }
-
 }
 
 $app = new Application();
