@@ -6,7 +6,7 @@
  * Time: 8:42
  */
 
-namespace DesignPatterns\CreationalPattern\Prototype;
+namespace DesignPatterns\CreationalPatterns\Prototype;
 
 abstract class Prototype
 {

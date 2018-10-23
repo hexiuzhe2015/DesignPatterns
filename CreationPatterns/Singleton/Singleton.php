@@ -5,7 +5,7 @@
  * Date: 2018/10/20
  * Time: 9:28
  */
-namespace DesignPatterns\CreationalPattern\Singleton;
+namespace DesignPatterns\CreationalPatterns\Singleton;
 
 final class Singleton //禁止被继承
 {

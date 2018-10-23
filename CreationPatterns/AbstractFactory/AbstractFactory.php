@@ -6,7 +6,7 @@
  * Time: 22:25
  */
 
-namespace DesignPatterns\CreationalPattern\AbstractFactory;
+namespace DesignPatterns\CreationalPatterns\AbstractFactory;
 
 class Button{}
 class Border{}

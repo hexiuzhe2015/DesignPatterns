@@ -6,7 +6,7 @@
  * Time: 10:09
  */
 
-namespace DesignPatterns\CreationalPattern\Builder;
+namespace DesignPatterns\CreationalPatterns\Builder;
 
 interface Builder
 {

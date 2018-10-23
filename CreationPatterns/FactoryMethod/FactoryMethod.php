@@ -6,7 +6,7 @@
  * Time: 8:31
  */
 
-namespace DesignPatterns\CreationalPattern\FactoryMethod;
+namespace DesignPatterns\CreationalPatterns\FactoryMethod;
 
 /* Factory and car interfaces */
 

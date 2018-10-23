@@ -6,7 +6,7 @@
  * Time: 15:47
  */
 
-namespace DesignPatterns\CreationalPattern\ObjectPool;
+namespace DesignPatterns\CreationalPatterns\ObjectPool;
 
 interface KernelContract
 {

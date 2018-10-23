@@ -6,7 +6,7 @@
  * Time: 14:35
  */
 
-namespace DesignPatterns\CreationalPattern\Multiton;
+namespace DesignPatterns\CreationalPatterns\Multiton;
 
 final class Multiton //禁止被继承
 {

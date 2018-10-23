@@ -7,7 +7,7 @@
  */
 
 //工厂模式的变种 variant
-namespace DesignPatterns\CreationalPattern\FactoryMethod;
+namespace DesignPatterns\CreationalPatterns\FactoryMethod;
 
 class Button{}
 class WinButton extends Button{}
