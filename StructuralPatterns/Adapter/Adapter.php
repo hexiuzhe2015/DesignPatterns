@@ -7,3 +7,4 @@
  */
 
 namespace DesignPatterns\StructuralPatterns\Adapter;
+
