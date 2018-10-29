@@ -8,78 +8,147 @@
 
 namespace DesignPatterns\StructuralPatterns\ObjectAdapter;
 
-interface Phone
+
+// Adapter Pattern example
+
+interface IFormatIPhone
 {
     public function recharge();
+    public function useLightning();
 }
 
-interface PowerBank{}
-
-class IphonePowerBank implements PowerBank
+interface IFormatAndroid
 {
-    public function usbToLightning()
-    {
-        return 'lightning';
-    }
+    public function recharge();
+    public function useMicroUsb();
 }
 
-class AndroidPowerBank implements PowerBank
+// Adaptee
+class IPhone implements IFormatIPhone
 {
-    public function usbToTypeC()
-    {
-        return 'type-c';
-    }
-}
+    private $connectorOk = FALSE;
 
-class Iphone implements Phone
-{
-    public $socket;
-    public function __construct(IphonePowerBank $bank)
+    public function useLightning()
     {
-        $this->socket = $bank;
-    }
-
-
-    public function recharge()
-    {
-        return $this->socket->usbToLightning();
-    }
-}
-
-class AndroidPhone implements Phone
-{
-    public $socket;
-    public function __construct(AndroidPowerBank $bank)
-    {
-        $this->socket = $bank;
+        $this->connectorOk = TRUE;
+        echo "Lightning connected -$\n";
     }
 
     public function recharge()
     {
-        // TODO: Implement socket() method.
-        return $this->socket->usbToTypeC();
+        if($this->connectorOk)
+        {
+            echo "Recharge Started\n";
+            echo "Recharge 20%\n";
+            echo "Recharge 50%\n";
+            echo "Recharge 70%\n";
+            echo "Recharge Finished\n";
+        }
+        else
+        {
+            echo "Connect Lightning first\n";
+        }
     }
 }
 
-class Adapter extends IphonePowerBank
+// Adapter
+class IPhoneAdapter implements IFormatAndroid
 {
-    public $in;
-    public $out;
-    public function __construct(AndroidPowerBank $bank)
+    private $mobile;
+
+    public function __construct(IFormatIPhone $mobile)
     {
-        $this->in = $bank;
+        $this->mobile = $mobile;
     }
-    public function typeCToLightning()
+
+    public function recharge()
     {
-        $this->out = $this->in->usbToTypeC();
-        return $this->out;
+        $this->mobile->recharge();
+    }
+
+    public function useMicroUsb()
+    {
+        echo "MicroUsb connected -> ";
+        $this->mobile->useLightning();
     }
 }
 
-$bank = new AndroidPowerBank();
-$adapter = new Adapter($bank);
-$recharge = new AndroidPhone($bank);
+class Android implements IFormatAndroid
+{
+    private $connectorOk = FALSE;
 
-$recharge = new Iphone($adapter);
-echo $recharge->recharge();
-//print_r($recharge);
+    public function useMicroUsb()
+    {
+        $this->connectorOk = TRUE;
+        echo "MicroUsb connected ->\n";
+    }
+
+    public function recharge()
+    {
+        if($this->connectorOk)
+        {
+            echo "Recharge Started\n";
+            echo "Recharge 20%\n";
+            echo "Recharge 50%\n";
+            echo "Recharge 70%\n";
+            echo "Recharge Finished\n";
+        }
+        else
+        {
+            echo "Connect MicroUsb first\n";
+        }
+    }
+}
+
+// client
+class MicroUsbRecharger
+{
+    private $phone;
+    private $phoneAdapter;
+
+    public function __construct()
+    {
+        echo "---Recharging iPhone with Generic Recharger---\n";
+        $this->phone = new IPhone();
+        $this->phoneAdapter = new IPhoneAdapter($this->phone);
+        $this->phoneAdapter->useMicroUsb();
+        $this->phoneAdapter->recharge();
+        echo "---iPhone Ready for use---\n\n";
+    }
+}
+
+$microUsbRecharger = new MicroUsbRecharger();
+
+class IPhoneRecharger
+{
+    private $phone;
+
+    public function __construct()
+    {
+        echo "---Recharging iPhone with iPhone Recharger---\n";
+        $this->phone = new IPhone();
+        $this->phone->useLightning();
+        $this->phone->recharge();
+        echo "---iPhone Ready for use---\n\n";
+    }
+}
+
+$iPhoneRecharger = new IPhoneRecharger();
+
+class AndroidRecharger
+{
+    private $phone;
+
+    public function __construct()
+    {
+        echo "---Recharging Android Phone with Generic Recharger---\n";
+        $this->phone = new Android();
+        $this->phone->useMicroUsb();
+        $this->phone->recharge();
+        echo "---Phone Ready for use---\n\n";
+    }
+}
+
+$androidRecharger = new AndroidRecharger();
+
+
