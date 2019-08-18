@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\CreationalPatterns\Singleton;
 
-final class Singleton //禁止被继承
+class Singleton 
 {
     private static $instance;
 
